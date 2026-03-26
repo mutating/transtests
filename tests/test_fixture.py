@@ -1,5 +1,5 @@
-from inspect import iscoroutinefunction, isgeneratorfunction
 from asyncio import run
+from inspect import iscoroutinefunction, isgeneratorfunction
 
 
 def test_all_kind_of_functions(transformed):
