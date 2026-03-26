@@ -1,14 +1,21 @@
+from collections.abc import Awaitable, Callable, Generator
+from typing import TypeVar, Union
+
 import pytest
 from transfunctions import transfunction
+from typing_extensions import ParamSpec
 
+FunctionParameters = ParamSpec('FunctionParameters')
+ReturnValue = TypeVar('ReturnValue')
 
-@pytest.fixture(params=['async', 'sync', 'generator'])
-def transformed(request):
-    def transformator_function(function):
+@pytest.fixture(params=['sync', 'async', 'generator'])
+def transformed(request: pytest.FixtureRequest) -> Callable[[Callable[FunctionParameters, ReturnValue]], Callable[FunctionParameters, Union[ReturnValue, Generator[ReturnValue, None, None], Awaitable[ReturnValue]]]]:
+    def transformator_function(function: Callable[FunctionParameters, ReturnValue]) -> Callable[FunctionParameters, Union[ReturnValue, Generator[ReturnValue, None, None], Awaitable[ReturnValue]]]:  # type: ignore[return]
         if request.param == 'sync':
             return function
         if request.param == 'async':
-            return transfunction(function, check_decorators=False).get_async_function()
+            return transfunction(check_decorators=False)(function).get_async_function()
         if request.param == 'generator':
-            return transfunction(function, check_decorators=False).get_generator_function()
+            return transfunction(check_decorators=False)(function).get_generator_function()
+
     return transformator_function
