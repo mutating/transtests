@@ -1,0 +1,7 @@
+pytest==8.3.5
+coverage==7.6.1
+build==1.2.2.post1
+twine==6.1.0
+mypy==1.14.1
+ruff==0.14.6
+full_match==0.0.3
