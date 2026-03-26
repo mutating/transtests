@@ -5,7 +5,6 @@ import pytest
 from transfunctions import transfunction
 from typing_extensions import ParamSpec
 
-
 FunctionParameters = ParamSpec('FunctionParameters')
 ReturnValue = TypeVar('ReturnValue')
 
