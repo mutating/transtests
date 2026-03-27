@@ -2,7 +2,7 @@ from collections.abc import Awaitable, Callable, Generator
 from typing import TypeVar, Union
 
 try:
-    from typing import ParamSpec
+    from typing import ParamSpec  # type: ignore[attr-defined]
 except ImportError:  # pragma: no cover
     from typing_extensions import ParamSpec
 
@@ -15,8 +15,8 @@ FunctionParameters = ParamSpec('FunctionParameters')
 ReturnValue = TypeVar('ReturnValue')
 
 @pytest.fixture(params=['sync', 'async', 'generator'])
-def transformed(request: pytest.FixtureRequest) -> Callable[[Callable[FunctionParameters, ReturnValue]], Callable[FunctionParameters, Union[ReturnValue, Generator[ReturnValue, None, None], Awaitable[ReturnValue]]]]:
-    def transformator_function(function: Callable[FunctionParameters, ReturnValue]) -> Callable[FunctionParameters, Union[ReturnValue, Generator[ReturnValue, None, None], Awaitable[ReturnValue]]]:
+def transformed(request: pytest.FixtureRequest) -> Callable[[Callable[FunctionParameters, ReturnValue]], Callable[FunctionParameters, Union[ReturnValue, Generator[ReturnValue, None, None], Awaitable[ReturnValue]]]]:  # type: ignore[valid-type]
+    def transformator_function(function: Callable[FunctionParameters, ReturnValue]) -> Callable[FunctionParameters, Union[ReturnValue, Generator[ReturnValue, None, None], Awaitable[ReturnValue]]]:  # type: ignore[valid-type]
         if request.param == 'sync':
             return function
         if request.param == 'async':
