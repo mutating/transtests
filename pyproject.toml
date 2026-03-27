@@ -12,7 +12,7 @@ description = 'A pytest plugin for situations where regular, async, and generato
 readme = "README.md"
 requires-python = ">=3.8"
 dependencies = [
-    'transfunctions>=0.0.11',
+    'transfunctions>=0.0.12',
     'pytest',
     'typing_extensions ; python_version <= "3.9"',
 ]
