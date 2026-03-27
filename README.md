@@ -15,6 +15,7 @@
 
 </details>
 
-# transtests
+
+![logo](https://raw.githubusercontent.com/mutating/transtests/develop/docs/assets/logo_1.svg)
 
 A pytest plugin for situations where regular, async, and generator functions share the same logic
