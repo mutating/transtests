@@ -8,7 +8,7 @@ version = "0.0.1"
 authors = [
   { name="Evgeniy Blinov", email="zheni-b@yandex.ru" },
 ]
-description = 'A pytest plugin for situations where regular, async, and generator functions share the same logic'
+description = 'A pytest plugin for testing logic that should work the same way across different types of functions: regular, async, and generator ones'
 readme = "README.md"
 requires-python = ">=3.8"
 dependencies = [
