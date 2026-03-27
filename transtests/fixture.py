@@ -1,5 +1,4 @@
-from collections.abc import Awaitable, Callable, Generator
-from typing import TypeVar, Union
+from typing import Awaitable, Callable, Generator, TypeVar, Union
 
 try:
     from typing import ParamSpec  # type: ignore[attr-defined]
