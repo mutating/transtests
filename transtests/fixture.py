@@ -1,5 +1,10 @@
 from collections.abc import Awaitable, Callable, Generator
-from typing import ParamSpec, TypeVar, Union
+from typing import TypeVar, Union
+
+try:
+    from typing import ParamSpec
+except ImportError:  # pragma: no cover
+    from typing_extensions import ParamSpec
 
 import pytest
 from transfunctions import transfunction
