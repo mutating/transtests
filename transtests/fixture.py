@@ -4,7 +4,7 @@ try:
     # TODO: Consider to delete all unused-ignore's from this file if Python 3.8 is deleted from the CI
     from typing import ParamSpec  # type: ignore[attr-defined, unused-ignore]
 except ImportError:  # pragma: no cover
-    from typing_extensions import ParamSpec
+    from typing_extensions import ParamSpec  # type: ignore[assignment, unused-ignore]
 
 import pytest
 from transfunctions import transfunction
