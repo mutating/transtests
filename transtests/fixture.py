@@ -18,7 +18,6 @@ def transformed(request: pytest.FixtureRequest) -> Callable[[Callable[FunctionPa
             return transfunction(check_decorators=False)(function).get_async_function()
         if request.param == 'generator':
             return transfunction(check_decorators=False)(function).get_generator_function()
-        # pragma: no cover
-        raise StrangeFunctionTypeError("You shouldn't see this error, but if you do, something has probably gone wrong with pytest.")
+        raise StrangeFunctionTypeError("You shouldn't see this error, but if you do, something has probably gone wrong with pytest.")  # pragma: no cover
 
     return transformator_function
