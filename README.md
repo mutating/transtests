@@ -18,4 +18,18 @@
 
 ![logo](https://raw.githubusercontent.com/mutating/transtests/develop/docs/assets/logo_1.svg)
 
-A pytest plugin for situations where regular, async, and generator functions share the same logic
+Sometimes you have code that needs to work the same way with regular, asynchronous, and generator functions. Usually, this means you have to write three sets of nearly identical tests. With this library, you no longer need to do that: a special fixture will generate the necessary tests for you.
+
+
+## Installation
+
+You can install [`transtests`](https://pypi.org/project/transtests) with `pip`:
+
+```bash
+pip install transtests
+```
+
+You can also use [`instld`](https://github.com/pomponchik/instld) to quickly try this package and others without installing them.
+
+
+## Usage
