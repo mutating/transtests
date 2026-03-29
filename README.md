@@ -21,15 +21,18 @@
 Sometimes you have code that needs to work the same way with regular, asynchronous, and generator functions. Usually, this means you have to write three sets of nearly identical tests. With this library, you no longer need to do that: a special fixture will generate the necessary tests for you.
 
 
-## Installation
+## Usage
 
-You can install [`transtests`](https://pypi.org/project/transtests) with `pip`:
+To use the fixture, you need to add it to your project using the following command:
 
 ```bash
 pip install transtests
 ```
 
-You can also use [`instld`](https://github.com/pomponchik/instld) to quickly try this package and others without installing them.
+The fixture is now available, and you can use the name `transformed` in the arguments of your tests:
 
+```def test_something(transformed):
+    ...
+```
 
-## Usage
+The `transformed` argument itself is a decorator that you can apply to a function defined within the test:
