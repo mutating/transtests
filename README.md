@@ -23,13 +23,13 @@ Sometimes you have code that needs to work the same way with regular, asynchrono
 
 ## Usage
 
-To use the fixture, you need to add it to your project using the following command:
+To use the fixture, install it via:
 
 ```bash
 pip install transtests
 ```
 
-The `transformed` fixture is now available for use. It returns a decorator that transforms the original function into one of three variants: the function itself, the same function but as an async, or as a generator function:
+The `transformed` fixture is now available. It returns a decorator that transforms the original function into one of three variants: the original synchronous function, the same function but as an async one, or as a generator function:
 
 ```python
 from asyncio import run
@@ -41,13 +41,13 @@ def test_something(transformed):
         return a + b
     
     if iscoroutinefunction(function):
-        assert run(function(1, 2)) == 3
+        assert run(some_function(1, 2)) == 3
 
     elif isgeneratorfunction(function):
-        assert list(function(1, 2)) == [3]
+        assert list(some_function(1, 2)) == [3]
 
     else:
-        assert function(1, 2) == 3
+        assert some_function(1, 2) == 3
 ```
 
-This functionality is based on the [`transfunctions`](https://github.com/mutating/transfunctions) library, so you can use context managers from that library in the original template function.
+This functionality is based on the [`transfunctions`](https://github.com/mutating/transfunctions) library, so you can use context managers from that library in the source function.
