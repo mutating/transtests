@@ -18,7 +18,7 @@
 
 ![logo](https://raw.githubusercontent.com/mutating/transtests/develop/docs/assets/logo_1.svg)
 
-When you have code that needs to work the same way with regular, asynchronous, and generator functions. Usually, this means you have to write three sets of nearly identical tests. With this library, you no longer need to do that: a special fixture will generate the necessary tests for you.
+If your code needs to work the same way with regular, asynchronous, and generator functions, you normally have to write three sets of nearly identical tests. With this library, you no longer need to do that — just use the special fixture, which generates the necessary variants automatically.
 
 
 ## Usage
