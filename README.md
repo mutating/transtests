@@ -29,10 +29,25 @@ To use the fixture, you need to add it to your project using the following comma
 pip install transtests
 ```
 
-The fixture is now available, and you can use the name `transformed` in the arguments of your tests:
+The `transformed` fixture is now available for use. It returns a decorator that transforms the original function into one of three variants: the function itself, the same function but as an async, or as a generator function:
 
-```def test_something(transformed):
-    ...
+```python
+from asyncio import run
+from inspect import iscoroutinefunction, isgeneratorfunction
+
+def test_something(transformed):
+    @transformed
+    def some_function(a, b):
+        return a + b
+    
+    if iscoroutinefunction(function):
+        assert run(function(1, 2)) == 3
+
+    elif isgeneratorfunction(function):
+        assert list(function(1, 2)) == [3]
+
+    else:
+        assert function(1, 2) == 3
 ```
 
-The `transformed` argument itself is a decorator that you can apply to a function defined within the test:
+This functionality is based on the [`transfunctions`](https://github.com/mutating/transfunctions) library, so you can use context managers from that library in the original template function.
