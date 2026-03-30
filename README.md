@@ -50,6 +50,6 @@ def test_something(transformed):
         assert some_function(1, 2) == 3
 ```
 
-> ↑ The test will be run three times automatically, once for each variant.
+> ↑ The test will be run three times automatically, once per variant.
 
 This functionality is based on the [`transfunctions`](https://github.com/mutating/transfunctions) library, so you can use context managers from that library in the source function.
