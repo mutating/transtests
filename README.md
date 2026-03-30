@@ -29,7 +29,7 @@ To use the fixture, install it via:
 pip install transtests
 ```
 
-The `transformed` fixture is now available. It returns a decorator that transforms the original function into one of three variants: the original synchronous function, the same function but as an async one, or as a generator function:
+The `transformed` fixture is now available. It returns a decorator that transforms the original function into one of three variants: a synchronous function, an asynchronous function, or a generator function:
 
 ```python
 from asyncio import run
