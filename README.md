@@ -18,7 +18,7 @@
 
 ![logo](https://raw.githubusercontent.com/mutating/transtests/develop/docs/assets/logo_1.svg)
 
-Sometimes you have code that needs to work the same way with regular, asynchronous, and generator functions. Usually, this means you have to write three sets of nearly identical tests. With this library, you no longer need to do that: a special fixture will generate the necessary tests for you.
+When you have code that needs to work the same way with regular, asynchronous, and generator functions. Usually, this means you have to write three sets of nearly identical tests. With this library, you no longer need to do that: a special fixture will generate the necessary tests for you.
 
 
 ## Usage
@@ -40,10 +40,10 @@ def test_something(transformed):
     def some_function(a, b):
         return a + b
     
-    if iscoroutinefunction(function):
+    if iscoroutinefunction(some_function):
         assert run(some_function(1, 2)) == 3
 
-    elif isgeneratorfunction(function):
+    elif isgeneratorfunction(some_function):
         assert list(some_function(1, 2)) == [3]
 
     else:
