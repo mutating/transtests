@@ -18,7 +18,7 @@
 
 ![logo](https://raw.githubusercontent.com/mutating/transtests/develop/docs/assets/logo_1.svg)
 
-If your code needs to work the same way with regular, asynchronous, and generator functions, you normally have to write three sets of nearly identical tests. With this library, you no longer need to do that — just use the special fixture, which generates the necessary variants automatically.
+If your code needs to work the same way with regular, asynchronous, and generator functions, you normally have to write three sets of nearly identical tests. With this library, you no longer need to do that — just use the special fixture, which automatically generates the variants.
 
 
 ## Usage
@@ -49,5 +49,7 @@ def test_something(transformed):
     else:
         assert some_function(1, 2) == 3
 ```
+
+> ↑ The test will be run three times automatically, once for each variant.
 
 This functionality is based on the [`transfunctions`](https://github.com/mutating/transfunctions) library, so you can use context managers from that library in the source function.
