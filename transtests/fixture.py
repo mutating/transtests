@@ -16,6 +16,29 @@ ReturnValue = TypeVar('ReturnValue')
 
 @pytest.fixture(params=['sync', 'async', 'generator'])
 def transformed(request: pytest.FixtureRequest) -> Callable[[Callable[FunctionParameters, ReturnValue]], Callable[FunctionParameters, Union[ReturnValue, Generator[ReturnValue, None, None], Awaitable[ReturnValue]]]]:  # type: ignore[valid-type, unused-ignore]
+    """
+    Return a decorator that exposes a function in each supported form.
+
+    A test using this fixture runs once with the original synchronous function,
+    once with an async function, and once with a generator function.
+
+    Example:
+
+    >>> from asyncio import run
+    >>> from inspect import iscoroutinefunction, isgeneratorfunction
+    >>>
+    >>> def test_something(transformed):
+    ...     @transformed
+    ...     def some_function(a, b):
+    ...         return a + b
+    ...
+    ...     if iscoroutinefunction(some_function):
+    ...         assert run(some_function(1, 2)) == 3
+    ...     elif isgeneratorfunction(some_function):
+    ...         assert list(some_function(1, 2)) == [3]
+    ...     else:
+    ...         assert some_function(1, 2) == 3
+    """
     def transformator_function(function: Callable[FunctionParameters, ReturnValue]) -> Callable[FunctionParameters, Union[ReturnValue, Generator[ReturnValue, None, None], Awaitable[ReturnValue]]]:  # type: ignore[valid-type, unused-ignore]
         if request.param == 'sync':
             return function
